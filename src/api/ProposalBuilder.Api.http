@@ -1,0 +1,6 @@
+@ProposalBuilder.Api_HostAddress = http://localhost:5185
+
+GET {{ProposalBuilder.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

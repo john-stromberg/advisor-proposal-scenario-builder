@@ -1,0 +1,17 @@
+# Build
+bin/
+obj/
+
+# IDEs
+*.rsuser
+*.suo
+*.user
+*.sln.docstates
+
+# Visual Studio
+*.vcxproj.filters
+*.sln.iml
+
+# Runtime
+appsettings.Development.json
+
