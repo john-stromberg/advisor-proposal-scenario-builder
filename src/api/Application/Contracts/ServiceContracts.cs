@@ -17,6 +17,11 @@ public interface IScenarioExportService
  Task<string> ExportComparisonAsPdfSummaryAsync(ProposalComparison comparison);
 }
 
+public interface IWorkflowOfficeService
+{
+ Task<ProposalDeliverables> GenerateDeliverablesAsync(ProposalComparison comparison);
+}
+
 public sealed record CreateScenarioRequest
 (
  string Name,
@@ -26,7 +31,8 @@ public sealed record CreateScenarioRequest
  int YearsToRetirement,
  decimal InflationRate,
  decimal AssumedReturn,
- Dictionary<string, decimal> Allocation
+ Dictionary<string, decimal> Allocation,
+ string? PlanningNotes
 );
 
 public sealed record ComparisonResultDto

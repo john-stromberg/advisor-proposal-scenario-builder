@@ -38,7 +38,7 @@
 <div class=\"container\">
   <div class=\"header\">
     <h1>Proposal Scenario Builder</h1>
-    <p>Compare current vs proposed client strategy scenarios with detailed analysis.</p>
+    <p>Workflow-oriented proposal builder for current vs proposed scenarios with Office-ready deliverable references.</p>
   </div>
 
   <div class=\"content\">
@@ -76,7 +76,12 @@
         <label>Assumed Return (%):</label>
         <input type=\"number\" id=\"assumedReturn\" value=\"7\" step=\"0.1\" />
       </div>
-      
+
+      <div class=\"form-group\">
+        <label>Planning Notes:</label>
+        <input type=\"text\" id=\"planningNotes\" value=\"Generate client-ready comparison packet and follow-up summary.\" />
+      </div>
+
       <button class=\"btn btn-primary\" onclick=\"createCurrentScenario()\">Create Current Scenario</button>
       <button class=\"btn btn-primary\" onclick=\"createProposedScenario()\" style=\"margin-left:8px\">Create Proposed Scenario</button>
     </div>
@@ -145,7 +150,8 @@ async function createScenario(type) {
     yearsToRetirement: parseInt(document.getElementById(\"yearsToRetirement\").value),
     inflationRate: parseFloat(document.getElementById(\"inflationRate\").value) / 100,
     assumedReturn: parseFloat(document.getElementById(\"assumedReturn\").value) / 100,
-    allocation: { stocks: 0.6, bonds: 0.3, cash: 0.1 }
+    allocation: { stocks: 0.6, bonds: 0.3, cash: 0.1 },
+    planningNotes: document.getElementById("planningNotes").value
   };
 
   try {
@@ -215,6 +221,22 @@ function displayResults(data) {
     <div class=\"result-item\">
       <div class=\"result-label\">Analysis Summary:</div>
       <div class=\"result-value\">${result.analysisSummary || \"N/A\"}</div>
+    </div>
+    <div class=\"result-item\">
+      <div class=\"result-label\">Word Packet:</div>
+      <div class=\"result-value\">${data.deliverables?.wordPacketPath || \"N/A\"}</div>
+    </div>
+    <div class=\"result-item\">
+      <div class=\"result-label\">Excel Comparison:</div>
+      <div class=\"result-value\">${data.deliverables?.excelComparisonPath || \"N/A\"}</div>
+    </div>
+    <div class=\"result-item\">
+      <div class=\"result-label\">Outlook Draft:</div>
+      <div class=\"result-value\">${data.deliverables?.outlookDraftReference || \"N/A\"}</div>
+    </div>
+    <div class=\"result-item\">
+      <div class=\"result-label\">SharePoint Target:</div>
+      <div class=\"result-value\">${data.deliverables?.sharePointTargetPath || \"N/A\"}</div>
     </div>
   `;
   resultsDiv.style.display = \"block\";

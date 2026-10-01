@@ -21,6 +21,7 @@ public sealed class ScenariosController(IScenarioService scenarioService) : Cont
             InflationRate = req.InflationRate,
             AssumedReturn = req.AssumedReturn,
             AllocationJson = System.Text.Json.JsonSerializer.Serialize(req.Allocation),
+            PlanningNotes = req.PlanningNotes ?? string.Empty,
             CreatedDate = DateOnly.FromDateTime(DateTime.Now),
         };
 
@@ -56,6 +57,7 @@ public sealed class ScenariosController(IScenarioService scenarioService) : Cont
             comparison.Id,
             comparison.CurrentScenarioId,
             comparison.ProposedScenarioId,
+            comparison.Deliverables,
             result
         });
     }

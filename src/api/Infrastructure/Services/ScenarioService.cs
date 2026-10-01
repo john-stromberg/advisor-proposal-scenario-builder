@@ -8,10 +8,12 @@ public sealed class ScenarioService : IScenarioService
 {
     private static readonly ConcurrentDictionary<Guid, HouseholdScenario> _scenarios = new();
     private readonly IScenarioExportService _exportService;
+    private readonly IWorkflowOfficeService _workflowOfficeService;
 
-    public ScenarioService(IScenarioExportService exportService)
+    public ScenarioService(IScenarioExportService exportService, IWorkflowOfficeService workflowOfficeService)
     {
         _exportService = exportService;
+        _workflowOfficeService = workflowOfficeService;
     }
 
     public async Task<HouseholdScenario> CreateScenarioAsync(HouseholdScenario scenario)
@@ -54,6 +56,7 @@ public sealed class ScenarioService : IScenarioService
             ResultsJson = System.Text.Json.JsonSerializer.Serialize(result),
         };
 
+        comparison.Deliverables = await _workflowOfficeService.GenerateDeliverablesAsync(comparison);
         return comparison;
     }
 

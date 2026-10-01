@@ -1,14 +1,14 @@
 # Proposal Scenario Builder
 
 ## Overview
-This is a professional wealth strategy tool integrated with the Advisory Workflow Dashboard hub. It enables advisors to compare current vs. proposed client portfolio strategies with impact analysis.
+This is a workflow automation suite tool integrated with the Advisory Workflow Dashboard hub. It enables advisors to compare current vs. proposed client strategy scenarios and generate Office-ready proposal packet references.
 
 ## Features
-- Create and manage household scenarios with portfolio parameters
-- Compare current vs. proposed allocations side-by-side
+- Create and manage household proposal scenarios with planning notes
+- Compare current vs. proposed strategies side-by-side
 - Analyze future value impact with inflation and return assumptions
-- Calculate retirement timeline changes
-- Export comparison reports
+- Generate Office-ready deliverable references for Word, Excel, Outlook, and SharePoint
+- Support advisor workflow handoff for proposal packets
 
 ## Quick Start
 ```
@@ -18,11 +18,11 @@ dotnet run --project src/api/ProposalBuilder.Api.csproj --urls http://localhost:
 Navigate to http://localhost:5057 to load the scenario builder UI.
 
 ## Usage Workflow
-1. **Enter Client Details**: Input portfolio value, income, and time horizon
-2. **Create Current Scenario**: Capture the existing allocation
-3. **Create Proposed Scenario**: Model a new strategy (with slightly different return assumptions)
-4. **Compare**: View side-by-side impact analysis
-5. **Review Results**: Analyze FV differences and retirement timeline impact
+1. **Enter Client Details**: Input portfolio value, income, time horizon, and planning notes
+2. **Create Current Scenario**: Capture the existing strategy baseline
+3. **Create Proposed Scenario**: Model the proposed strategy case
+4. **Compare**: Generate side-by-side proposal impact analysis
+5. **Review Deliverables**: Use Word/Excel/Outlook/SharePoint references for advisor packet workflow
 
 ## API Endpoints
 - `POST /api/scenarios/create` - Create a new scenario
@@ -39,5 +39,5 @@ Navigate to http://localhost:5057 to load the scenario builder UI.
 This repo is indexed in the `advisory-workflow-dashboard` module registry. See the hub repo for loose integration details.
 
 ## Development
-The project uses in-memory storage for MVP. Calculation logic is simplified with mock future-value analysis.
+The project uses in-memory storage for MVP. Calculation logic remains simplified, and Office outputs are represented as Graph-ready deliverable references for workflow alignment.
 

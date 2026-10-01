@@ -12,6 +12,7 @@ public sealed class HouseholdScenario
     public decimal InflationRate { get; set; } = 0.03m;
     public decimal AssumedReturn { get; set; } = 0.07m;
     public string AllocationJson { get; set; } = "{}";
+    public string PlanningNotes { get; set; } = string.Empty;
     public DateTimeOffset Timestamp { get; set; } = DateTimeOffset.UtcNow;
 }
 
@@ -23,5 +24,14 @@ public sealed class ProposalComparison
     public HouseholdScenario? CurrentScenario { get; set; }
     public HouseholdScenario? ProposedScenario { get; set; }
     public string ResultsJson { get; set; } = "{}";
+    public ProposalDeliverables Deliverables { get; set; } = new();
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
+}
+
+public sealed class ProposalDeliverables
+{
+    public string WordPacketPath { get; set; } = string.Empty;
+    public string ExcelComparisonPath { get; set; } = string.Empty;
+    public string OutlookDraftReference { get; set; } = string.Empty;
+    public string SharePointTargetPath { get; set; } = string.Empty;
 }
