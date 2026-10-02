@@ -28,10 +28,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 app.UseAuthorization();
-app.UseDefaultFiles();
-app.UseStaticFiles();
 
+app.MapGet("/", () => Results.Ok(new { message = "Proposal Scenario Builder API only. Use the dashboard UI for the interactive page." }));
 app.MapControllers();
-app.MapFallbackToFile("/index.html");
 
 app.Run();
