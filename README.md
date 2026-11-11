@@ -1,3 +1,8 @@
+> **Moved:** This project is maintained in [advisor-platform/projects/advisor-proposal-scenario-builder](https://github.com/john-stromberg/advisor-platform/tree/main/projects/advisor-proposal-scenario-builder).
+> This repository is retained as a historical snapshot.
+
+---
+
 # Proposal Scenario Builder
 
 ## Overview
